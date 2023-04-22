@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.RainfallMapper">
+
+<select id="selectonemonth" resultType="com.example.springboot.entity.Rainfall">
+SELECT
+	AVG(a.rainfall_tital) rainfallTital,
+	AVG(a.water) water,
+	AVG(a.temperature) temperature,
+	a.time1 as time
+	FROM(
+SELECT
+	r.*,
+	DATE_FORMAT( r.time, '%Y-%m-%d' ) AS time1
+FROM
+	rainfall r
+WHERE
+	r.time > #{minusDays}
+	) a
+GROUP BY
+	a.time1
+	ORDER BY a.time1
+ </select>
+
+ </mapper>
