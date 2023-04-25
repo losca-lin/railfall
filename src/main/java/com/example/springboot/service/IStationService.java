@@ -11,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IStationService extends IService<Station> {
 
+    Station getInfoByUid(Integer uid);
 }

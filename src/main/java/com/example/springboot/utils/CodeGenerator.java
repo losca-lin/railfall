@@ -22,11 +22,11 @@ public class CodeGenerator {
     private static final String username = "root";
     private static final String password = "123456";
 
-    private static final String basePath = "C:\\Users\\Administrator\\Desktop\\毕设\\雨量监测管理系统\\rainfall\\";
+    private static final String basePath = "C:\\Users\\losca\\Desktop\\temp\\4.20\\rainfall\\";
 
     public static void main(String[] args) throws Exception {
-        String tableName = "essage";
-        String modelName = "系统公告";
+        String tableName = "tlj";
+        String modelName = "铁路局";
 
         // 生成SpringBoot
         generate(tableName);
