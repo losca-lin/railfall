@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 本地连接
+ Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 50728
+ Source Server Version : 50727
  Source Host           : localhost:3306
  Source Schema         : rainfall
 
  Target Server Type    : MySQL
- Target Server Version : 50728
+ Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 25/03/2023 23:42:27
+ Date: 29/04/2023 19:53:41
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `essage`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `title` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标题',
   `content` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
-  `time` datetime(0) NULL DEFAULT NULL COMMENT '时间',
+  `time` datetime NULL DEFAULT NULL COMMENT '时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统公告' ROW_FORMAT = DYNAMIC;
 
@@ -33,6 +33,41 @@ CREATE TABLE `essage`  (
 -- Records of essage
 -- ----------------------------
 INSERT INTO `essage` VALUES (4, '系统更新', '晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，晚上8-9点系统将进行更新，', '2023-03-25 22:53:46');
+
+-- ----------------------------
+-- Table structure for gwd
+-- ----------------------------
+DROP TABLE IF EXISTS `gwd`;
+CREATE TABLE `gwd`  (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `details` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `rid` int(11) NULL DEFAULT NULL COMMENT '铁路线id',
+  `rname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '铁路线名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of gwd
+-- ----------------------------
+INSERT INTO `gwd` VALUES (1, '工务段1', '测试', 6, '456');
+INSERT INTO `gwd` VALUES (2, '工务段2', '11', 2, '上海-广东');
+INSERT INTO `gwd` VALUES (4, '工务段3', '33', 1, 'name_gywzn');
+
+-- ----------------------------
+-- Table structure for map
+-- ----------------------------
+DROP TABLE IF EXISTS `map`;
+CREATE TABLE `map`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of map
+-- ----------------------------
+INSERT INTO `map` VALUES (1, '张三');
 
 -- ----------------------------
 -- Table structure for railwayline
@@ -43,15 +78,18 @@ CREATE TABLE `railwayline`  (
   `uid` int(11) NULL DEFAULT NULL COMMENT '负责人',
   `name` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '铁路线名称',
   `grade` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '铁路线等级',
+  `tid` int(11) NULL DEFAULT NULL COMMENT '铁路局id',
+  `tname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '铁路局名称',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '铁路线管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '铁路线管理' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of railwayline
 -- ----------------------------
-INSERT INTO `railwayline` VALUES (1, 3, '成都-北京', 'Ⅰ级铁路');
-INSERT INTO `railwayline` VALUES (2, 1, '上海-广东', 'Ⅱ级铁路');
-INSERT INTO `railwayline` VALUES (6, 1, '456', 'Ⅱ级铁路');
+INSERT INTO `railwayline` VALUES (1, 1, 'name_gywzn', 'Ⅰ级铁路', 1, '铁路局1');
+INSERT INTO `railwayline` VALUES (2, 1, '上海-广东', 'Ⅱ级铁路', 1, '铁路局1');
+INSERT INTO `railwayline` VALUES (6, 1, '456', 'Ⅱ级铁路', 1, '铁路局1');
+INSERT INTO `railwayline` VALUES (7, 1, '京广线', 'Ⅱ级铁路', 1, '铁路局1');
 
 -- ----------------------------
 -- Table structure for railwayline_station
@@ -62,33 +100,18 @@ CREATE TABLE `railwayline_station`  (
   `rid` int(11) NULL DEFAULT NULL COMMENT '铁路线id',
   `sid` int(11) NOT NULL COMMENT '铁路点id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '铁路线与铁路点' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 40 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '铁路线与铁路点' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of railwayline_station
 -- ----------------------------
-INSERT INTO `railwayline_station` VALUES (14, 1, 1);
-INSERT INTO `railwayline_station` VALUES (15, 1, 3);
-INSERT INTO `railwayline_station` VALUES (16, 1, 4);
-INSERT INTO `railwayline_station` VALUES (17, 1, 3);
-INSERT INTO `railwayline_station` VALUES (18, 1, 2);
-INSERT INTO `railwayline_station` VALUES (19, 1, 1);
 INSERT INTO `railwayline_station` VALUES (20, 2, 1);
 INSERT INTO `railwayline_station` VALUES (21, 2, 2);
 INSERT INTO `railwayline_station` VALUES (22, 2, 3);
-INSERT INTO `railwayline_station` VALUES (23, 1, 1);
-INSERT INTO `railwayline_station` VALUES (24, 1, 2);
-INSERT INTO `railwayline_station` VALUES (25, 1, 4);
-INSERT INTO `railwayline_station` VALUES (26, 1, 3);
-INSERT INTO `railwayline_station` VALUES (27, 1, 2);
-INSERT INTO `railwayline_station` VALUES (28, 1, 1);
-INSERT INTO `railwayline_station` VALUES (29, 1, 4);
-INSERT INTO `railwayline_station` VALUES (30, 1, 3);
-INSERT INTO `railwayline_station` VALUES (31, 1, 2);
-INSERT INTO `railwayline_station` VALUES (32, 1, 1);
-INSERT INTO `railwayline_station` VALUES (33, 6, 2);
-INSERT INTO `railwayline_station` VALUES (34, 6, 3);
-INSERT INTO `railwayline_station` VALUES (35, 6, 4);
+INSERT INTO `railwayline_station` VALUES (36, 6, 2);
+INSERT INTO `railwayline_station` VALUES (37, 6, 3);
+INSERT INTO `railwayline_station` VALUES (38, 6, 4);
+INSERT INTO `railwayline_station` VALUES (39, 7, 4);
 
 -- ----------------------------
 -- Table structure for rainfall
@@ -97,14 +120,14 @@ DROP TABLE IF EXISTS `rainfall`;
 CREATE TABLE `rainfall`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `sid` int(11) NOT NULL COMMENT '车站id',
-  `time` timestamp(0) NULL DEFAULT NULL COMMENT '采集时间',
+  `time` timestamp NULL DEFAULT NULL COMMENT '采集时间',
   `rainfall_tital` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '累计雨量(mm)',
   `water` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '水位(m)',
   `rainfall_rank` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '雨量级别',
   `temperature` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '气温度数（摄氏度）',
   `uid` int(11) NULL DEFAULT NULL COMMENT '上传用户',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '雨量信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '雨量信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of rainfall
@@ -119,6 +142,7 @@ INSERT INTO `rainfall` VALUES (8, 1, '2023-03-02 00:00:00', '12', '12', '大雨'
 INSERT INTO `rainfall` VALUES (9, 1, '2023-03-02 03:00:00', '123', '12313', '大雨', '1321', 1);
 INSERT INTO `rainfall` VALUES (10, 1, '2023-03-08 04:00:00', '1651', '156316', '中雨', '1563', 1);
 INSERT INTO `rainfall` VALUES (11, 1, '2023-03-17 06:00:00', '89', '89', '大雨', '12', 1);
+INSERT INTO `rainfall` VALUES (12, 1, '2023-03-16 01:00:00', '12', '34', NULL, '2552', 1);
 
 -- ----------------------------
 -- Table structure for station
@@ -134,16 +158,19 @@ CREATE TABLE `station`  (
   `area` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车站面积',
   `details` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '车站详情',
   `img` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图片',
+  `gid` int(11) NULL DEFAULT NULL COMMENT '工务段id',
+  `gname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '工务段名称',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '车站信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '车站信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of station
 -- ----------------------------
-INSERT INTO `station` VALUES (1, 2, 'B64铁路点', '89', '45', '北京市', '1000', '5415321456', NULL);
-INSERT INTO `station` VALUES (2, 2, 'A108铁路点', '23', '158', '上海市', '5631453', '4563145631', NULL);
-INSERT INTO `station` VALUES (3, 2, 'A15铁路点', '235', '156', '天津市', '56', '1561', 'http://localhost:9090/file/ce3cd1cd98f84491a9dc12885bee85b7.png');
-INSERT INTO `station` VALUES (4, 1, '56416', '100', '100', '北京市', '115', '51563', 'http://localhost:9090/file/3342679142a1489099fbb5a2084d673a.jpg');
+INSERT INTO `station` VALUES (1, 2, 'B64铁路点', '39', '116', '北京市', '1000', '5415321456', NULL, 1, '工务段1');
+INSERT INTO `station` VALUES (2, 2, 'A108铁路点', '40', '113', '上海市', '5631453', '4563145631', NULL, 1, '工务段1');
+INSERT INTO `station` VALUES (3, 2, 'A15铁路点', '37', '117', '天津市', '56', '1561', 'http://localhost:9090/file/ce3cd1cd98f84491a9dc12885bee85b7.png', 1, '工务段1');
+INSERT INTO `station` VALUES (4, 1, '56416', '36', '112', '北京市', '115', '51563', 'http://localhost:9090/file/3342679142a1489099fbb5a2084d673a.jpg', 1, '工务段1');
+INSERT INTO `station` VALUES (6, 1, 'tt', '42', '111', NULL, '123', NULL, NULL, 4, '工务段3');
 
 -- ----------------------------
 -- Table structure for sys_dict
@@ -181,7 +208,7 @@ CREATE TABLE `sys_file`  (
   `is_delete` tinyint(1) NULL DEFAULT 0 COMMENT '是否删除',
   `enable` tinyint(1) NULL DEFAULT 1 COMMENT '是否禁用链接',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_file
@@ -190,6 +217,7 @@ INSERT INTO `sys_file` VALUES (52, '95de6cb968744e4cbbe19d424d99af59.png', 'png'
 INSERT INTO `sys_file` VALUES (53, '17cfd74665364bdaa8632fe3a7afd8a2.jpg', 'jpg', 13, 'http://localhost:9090/file/3342679142a1489099fbb5a2084d673a.jpg', 'd4c3baabf8b467c225b39207fea618b6', 0, 1);
 INSERT INTO `sys_file` VALUES (54, '1.png', 'png', 544, 'http://localhost:9090/file/ce3cd1cd98f84491a9dc12885bee85b7.png', '06f01286858e8e4ed47746fbd194c0ae', 0, 1);
 INSERT INTO `sys_file` VALUES (55, 'a2d2da19bde9429c96d2e627b0f03a64.jpg', 'jpg', 22, 'http://localhost:9090/file/dfa21c998b6f45bc80c9fe459d17d789.jpg', 'fb96c7d2e7f999f5e604cdfaa62ba9b6', 0, 1);
+INSERT INTO `sys_file` VALUES (56, '1.jpg', 'jpg', 30, 'http://localhost:9090/file/5a52b957b0d149428ebf6432927ae140.jpg', '11577733a75f1d4f5ffd4301addfb5fa', 0, 1);
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -205,7 +233,7 @@ CREATE TABLE `sys_menu`  (
   `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '页面路径',
   `sort_num` int(11) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -218,13 +246,16 @@ INSERT INTO `sys_menu` VALUES (8, '文件管理', '/file', 'el-icon-document', N
 INSERT INTO `sys_menu` VALUES (10, '主页', '/home', 'el-icon-house', NULL, NULL, 'Home', 50);
 INSERT INTO `sys_menu` VALUES (17, '修改密码', '/password', 'el-icon-menu', NULL, NULL, 'Password', 801);
 INSERT INTO `sys_menu` VALUES (18, '个人信息', '/person', 'el-icon-menu', NULL, NULL, 'Person', 800);
-INSERT INTO `sys_menu` VALUES (25, '铁路点信息', '/station', 'el-icon-menu', NULL, NULL, 'Station', 20);
+INSERT INTO `sys_menu` VALUES (25, '站点信息', '/station', 'el-icon-menu', NULL, NULL, 'Station', 20);
 INSERT INTO `sys_menu` VALUES (26, '雨量信息', '/rainfall', 'el-icon-menu', NULL, NULL, 'Rainfall', 40);
 INSERT INTO `sys_menu` VALUES (27, '车站信息添加', '/stationadd', 'el-icon-menu', NULL, NULL, 'Stationadd', 10);
 INSERT INTO `sys_menu` VALUES (28, '雨量信息添加', '/rainfalladd', 'el-icon-menu', NULL, NULL, 'Rainfalladd', 30);
-INSERT INTO `sys_menu` VALUES (29, '铁路线管理', '/railwayline', 'el-icon-menu', NULL, NULL, 'Railwayline', 19);
+INSERT INTO `sys_menu` VALUES (29, '铁路线管理', '/railwayline', 'el-icon-menu', NULL, NULL, 'Railwayline', 22);
 INSERT INTO `sys_menu` VALUES (30, '铁路线与铁路点', '/railwaylineStation', 'el-icon-menu', NULL, NULL, 'RailwaylineStation', 999);
 INSERT INTO `sys_menu` VALUES (31, '系统公告', '/essage', 'el-icon-menu', NULL, NULL, 'Essage', 2);
+INSERT INTO `sys_menu` VALUES (33, '地图', '/map', 'el-icon-menu', NULL, NULL, 'Map', 999);
+INSERT INTO `sys_menu` VALUES (34, '工务段', '/gwd', 'el-icon-menu', NULL, NULL, 'Gwd', 21);
+INSERT INTO `sys_menu` VALUES (35, '铁路局', '/tlj', 'el-icon-menu', NULL, NULL, 'Tlj', 22);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -242,8 +273,8 @@ CREATE TABLE `sys_role`  (
 -- Records of sys_role
 -- ----------------------------
 INSERT INTO `sys_role` VALUES (1, '系统管理员', '系统管理员', 'ROLE_ADMIN');
-INSERT INTO `sys_role` VALUES (2, '铁路点用户', '车站管理员', 'ROLE_USER');
-INSERT INTO `sys_role` VALUES (3, '铁路线用户', '铁路线用户', 'ROLE_RAILWAYS');
+INSERT INTO `sys_role` VALUES (2, '工务段用户', '车站管理员', 'ROLE_USER');
+INSERT INTO `sys_role` VALUES (3, '铁路局用户', '铁路局用户', 'ROLE_RAILWAYS');
 
 -- ----------------------------
 -- Table structure for sys_role_menu
@@ -267,12 +298,16 @@ INSERT INTO `sys_role_menu` VALUES (1, 25);
 INSERT INTO `sys_role_menu` VALUES (1, 26);
 INSERT INTO `sys_role_menu` VALUES (1, 29);
 INSERT INTO `sys_role_menu` VALUES (1, 31);
+INSERT INTO `sys_role_menu` VALUES (1, 33);
+INSERT INTO `sys_role_menu` VALUES (1, 34);
+INSERT INTO `sys_role_menu` VALUES (1, 35);
 INSERT INTO `sys_role_menu` VALUES (2, 2);
 INSERT INTO `sys_role_menu` VALUES (2, 17);
 INSERT INTO `sys_role_menu` VALUES (2, 18);
 INSERT INTO `sys_role_menu` VALUES (2, 25);
 INSERT INTO `sys_role_menu` VALUES (2, 26);
 INSERT INTO `sys_role_menu` VALUES (2, 31);
+INSERT INTO `sys_role_menu` VALUES (2, 33);
 INSERT INTO `sys_role_menu` VALUES (3, 2);
 INSERT INTO `sys_role_menu` VALUES (3, 5);
 INSERT INTO `sys_role_menu` VALUES (3, 17);
@@ -294,7 +329,7 @@ CREATE TABLE `sys_user`  (
   `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '电话',
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '地址',
-  `create_time` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `avatar_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '头像',
   `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '角色',
   `sex` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
@@ -305,9 +340,25 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '管理员', 'admin@qq.com', '13917824791', '安徽', '2022-01-22 21:10:27', 'http://localhost:9090/file/dfa21c998b6f45bc80c9fe459d17d789.jpg', 'ROLE_ADMIN', '男', '北京');
+INSERT INTO `sys_user` VALUES (1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '管理员', 'admin@qq.com', '13917824791', '安徽', '2022-01-22 21:10:27', 'http://localhost:9090/file/5a52b957b0d149428ebf6432927ae140.jpg', 'ROLE_ADMIN', '男', '北京');
 INSERT INTO `sys_user` VALUES (2, 'zhang', 'e10adc3949ba59abbe56e057f20f883e', '张张', 'zhang@qq.com', '13671239900', '南京', '2022-02-26 22:10:14', NULL, 'ROLE_USER', NULL, NULL);
 INSERT INTO `sys_user` VALUES (3, 'wang', 'e10adc3949ba59abbe56e057f20f883e', '我是王五', 'wang@qq.com', '138731238855', '上海', '2022-02-26 22:10:18', '', 'ROLE_RAILWAYS', '男', '南京');
 INSERT INTO `sys_user` VALUES (4, 'liwei', 'e10adc3949ba59abbe56e057f20f883e', '李伟', NULL, NULL, NULL, '2023-03-25 22:11:18', NULL, 'ROLE_USER', NULL, NULL);
+
+-- ----------------------------
+-- Table structure for tlj
+-- ----------------------------
+DROP TABLE IF EXISTS `tlj`;
+CREATE TABLE `tlj`  (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `details` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tlj
+-- ----------------------------
+INSERT INTO `tlj` VALUES (1, '铁路局1', '测试');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -6,9 +6,11 @@ import cn.hutool.poi.excel.ExcelWriter;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
+import com.example.springboot.entity.Gwd;
 import com.example.springboot.entity.Rainfall;
 import com.example.springboot.entity.Station;
 import com.example.springboot.entity.User;
+import com.example.springboot.service.IGwdService;
 import com.example.springboot.service.IRainfallService;
 import com.example.springboot.service.IStationService;
 import com.example.springboot.service.IUserService;
@@ -38,6 +40,8 @@ public class StationController {
     private IRainfallService rainfallService;
     @Resource
     private IUserService userService;
+    @Resource
+    private IGwdService gwdService;
 
     // 新增或者更新 当id为空时候新增，当id不为空的时候根据id更新
     @PostMapping
@@ -46,6 +50,8 @@ public class StationController {
             User currentUser = TokenUtils.getCurrentUser();
             station.setUid(currentUser.getId());
         }
+        Gwd gwd = gwdService.getById(station.getGid());
+        station.setGname(gwd.getName());
         stationService.saveOrUpdate(station);
         return Result.success();
     }
@@ -90,7 +96,7 @@ public class StationController {
 
 
     @GetMapping("/getInfoByUid")
-    public Result getInfoByUid(@RequestParam("uid") Integer uid)  {
+    public Result getInfoByUid(@RequestParam("uid") Integer uid) {
         Station info = stationService.getInfoByUid(uid);
         return Result.success(info);
     }

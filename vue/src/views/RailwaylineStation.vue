@@ -21,7 +21,7 @@
       >
         <el-button type="danger" slot="reference">批量删除 <i class="el-icon-remove-outline"></i></el-button>
       </el-popconfirm>
-      <el-upload action="http://localhost:9090/tlj/import" :show-file-list="false" accept="xlsx" :on-success="handleExcelImportSuccess" style="display: inline-block">
+      <el-upload action="http://localhost:9090/railwaylineStation/import" :show-file-list="false" accept="xlsx" :on-success="handleExcelImportSuccess" style="display: inline-block">
         <el-button type="primary" class="ml-5">导入 <i class="el-icon-bottom"></i></el-button>
       </el-upload>
       <el-button type="primary" @click="exp" class="ml-5">导出 <i class="el-icon-top"></i></el-button>-->
@@ -30,8 +30,8 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
 <!--      <el-table-column type="selection" width="55"></el-table-column>-->
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="name" label="名称"></el-table-column>
-      <el-table-column prop="details" label="备注"></el-table-column>
+      <el-table-column prop="rid" label="铁路线id"></el-table-column>
+      <el-table-column prop="sid" label="铁路点id"></el-table-column>
 
       <el-table-column label="操作"  width="200" align="center">
         <template slot-scope="scope">
@@ -64,11 +64,11 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="50%" >
       <el-form label-width="120px" size="small">
-        <el-form-item label="名称">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+        <el-form-item label="铁路线id">
+          <el-input v-model="form.rid" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="备注">
-          <el-input v-model="form.details" autocomplete="off"></el-input>
+        <el-form-item label="铁路点id">
+          <el-input v-model="form.sid" autocomplete="off"></el-input>
         </el-form-item>
 
       </el-form>
@@ -82,7 +82,7 @@
 
 <script>
 export default {
-  name: "Tlj",
+  name: "RailwaylineStation",
   data() {
     return {
       tableData: [],
@@ -103,15 +103,15 @@ export default {
   },
   // 方法
   methods: {
-    // 获取所有的数据
+    // 获取所有的数据 
     list() {
-      this.request.get("/tlj").then(res => {
+      this.request.get("/railwaylineStation").then(res => {
         this.listdata = res.data
       })
     },
     // 分页查询数据
     load() {
-      this.request.get("/tlj/page", {
+      this.request.get("/railwaylineStation/page", {
         params: {
           pageNum: this.pageNum,
           pageSize: this.pageSize,
@@ -125,7 +125,7 @@ export default {
 
     // 新增或者更新数据  当id为空新增，id不为空更新
     save() {
-      this.request.post("/tlj", this.form).then(res => {
+      this.request.post("/railwaylineStation", this.form).then(res => {
         if (res.code === '200') {
           this.$message.success("保存成功")
           this.dialogFormVisible = false
@@ -163,7 +163,7 @@ export default {
     },
     // 根据id删除一行数据
     del(id) {
-      this.request.delete("/tlj/" + id).then(res => {
+      this.request.delete("/railwaylineStation/" + id).then(res => {
         if (res.code === '200') {
           this.$message.success("删除成功")
           this.load()
@@ -179,7 +179,7 @@ export default {
     // 批量删除
     delBatch() {
       let ids = this.multipleSelection.map(v => v.id)  // [{}, {}, {}] => [1,2,3]
-      this.request.post("/tlj/del/batch", ids).then(res => {
+      this.request.post("/railwaylineStation/del/batch", ids).then(res => {
         if (res.code === '200') {
           this.$message.success("批量删除成功")
           this.load()
@@ -212,7 +212,7 @@ export default {
       window.open(url)
     },
     exp() {
-      window.open("http://localhost:9090/tlj/export")
+      window.open("http://localhost:9090/railwaylineStation/export")
     },
     handleExcelImportSuccess() {
       this.$message.success("导入成功")

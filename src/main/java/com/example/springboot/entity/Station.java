@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -17,6 +19,8 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
   @ApiModel(value = "Station对象", description = "车站信息表")
 public class Station implements Serializable {
 
@@ -43,90 +47,9 @@ public class Station implements Serializable {
   private String latitude;
   private Integer uid;
 
+  private Integer gid;
+  private String gname;
+
   @TableField(exist = false)
   private User user;
-
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public String getArea() {
-    return area;
-  }
-
-  public void setArea(String area) {
-    this.area = area;
-  }
-
-  public String getDetails() {
-    return details;
-  }
-
-  public void setDetails(String details) {
-    this.details = details;
-  }
-
-  public String getImg() {
-    return img;
-  }
-
-  public void setImg(String img) {
-    this.img = img;
-  }
-
-  public String getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(String longitude) {
-    this.longitude = longitude;
-  }
-
-  public String getLatitude() {
-    return latitude;
-  }
-
-  public void setLatitude(String latitude) {
-    this.latitude = latitude;
-  }
-
-  public Integer getUid() {
-    return uid;
-  }
-
-  public void setUid(Integer uid) {
-    this.uid = uid;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
 }

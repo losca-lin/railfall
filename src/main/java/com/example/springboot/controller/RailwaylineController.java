@@ -7,16 +7,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
 import com.example.springboot.entity.Railwayline;
-import com.example.springboot.entity.RailwaylineStation;
-import com.example.springboot.entity.Station;
+import com.example.springboot.entity.Tlj;
 import com.example.springboot.entity.User;
 import com.example.springboot.mapper.RailwaylineMapper;
-import com.example.springboot.service.IRailwaylineService;
-import com.example.springboot.service.IRailwaylineStationService;
-import com.example.springboot.service.IStationService;
-import com.example.springboot.service.IUserService;
+import com.example.springboot.service.*;
 import com.example.springboot.utils.TokenUtils;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -48,25 +42,27 @@ public class RailwaylineController {
     @Resource
     private IRailwaylineStationService railwaylineStationService;
 
+    @Resource
+    private ITljService tljService;
     // 新增或者更新 当id为空时候新增，当id不为空的时候根据id更新
-    @PostMapping
+    @PostMapping("/")
     public Result save(@RequestBody Railwayline railwayline) {
         if (railwayline.getId()!=null){
+            Tlj tlj = tljService.getById(railwayline.getTid());
+            railwayline.setTname(tlj.getName());
             railwaylineService.updateById(railwayline);
-            QueryWrapper<RailwaylineStation> queryWrapper1 = new QueryWrapper<>();
-            queryWrapper1.eq("rid",railwayline.getId());
-            railwaylineStationService.remove(queryWrapper1);
-
         }else {
             User currentUser = TokenUtils.getCurrentUser();
             railwayline.setUid(currentUser.getId());
+            Tlj tlj = tljService.getById(railwayline.getTid());
+            railwayline.setTname(tlj.getName());
             railwaylineMapper.insert(railwayline);
         }
-        if (!CollectionUtils.isEmpty(railwayline.getStationListid())){
-            for (Integer integer : railwayline.getStationListid()) {
-                railwaylineStationService.save(new RailwaylineStation(railwayline.getId(), integer));
-            }
-        }
+        // if (!CollectionUtils.isEmpty(railwayline.getStationListid())){
+        //     for (Integer integer : railwayline.getStationListid()) {
+        //         railwaylineStationService.save(new RailwaylineStation(railwayline.getId(), integer));
+        //     }
+        // }
         return Result.success();
     }
 
@@ -109,17 +105,6 @@ public class RailwaylineController {
         Page<Railwayline> page = railwaylineService.page(new Page<>(pageNum, pageSize), queryWrapper);
         for (Railwayline record : page.getRecords()) {
             record.setUser(userService.getById(record.getUid()));
-            QueryWrapper<RailwaylineStation> queryWrapper1 = new QueryWrapper<>();
-            queryWrapper1.eq("rid",record.getId());
-            List<RailwaylineStation> list = railwaylineStationService.list(queryWrapper1);
-            if (!CollectionUtils.isEmpty(list)){
-                List<Integer> collect = list.stream().map(RailwaylineStation::getSid).collect(Collectors.toList());
-                QueryWrapper<Station> queryWrapper2 = new QueryWrapper<>();
-                queryWrapper2.in("id", collect);
-                List<Station> list1 = stationService.list(queryWrapper2);
-                record.setStationList(list1);
-                record.setStationListid(list1.stream().map(Station::getId).collect(Collectors.toList()));
-            }
         }
         return Result.success(page);
     }

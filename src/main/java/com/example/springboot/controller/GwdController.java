@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
 import com.example.springboot.entity.Gwd;
+import com.example.springboot.entity.Railwayline;
 import com.example.springboot.service.IGwdService;
+import com.example.springboot.service.IRailwaylineService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,9 +31,15 @@ public class GwdController {
     @Resource
     private IGwdService gwdService;
 
+    @Resource
+    private IRailwaylineService railwaylineService;
+
     // 新增或者更新 当id为空时候新增，当id不为空的时候根据id更新
     @PostMapping
     public Result save(@RequestBody Gwd gwd) {
+        Integer rid = gwd.getRid();
+        Railwayline railwayline = railwaylineService.getById(rid);
+        gwd.setRname(railwayline.getName());
         gwdService.saveOrUpdate(gwd);
         return Result.success();
     }
