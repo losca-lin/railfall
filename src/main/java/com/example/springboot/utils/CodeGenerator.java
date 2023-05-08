@@ -25,8 +25,8 @@ public class CodeGenerator {
     private static final String basePath = "C:\\Users\\losca\\Desktop\\temp\\4.20\\rainfall\\";
 
     public static void main(String[] args) throws Exception {
-        String tableName = "tlj";
-        String modelName = "铁路局";
+        String tableName = "rain_year";
+        String modelName = "雨量年报";
 
         // 生成SpringBoot
         generate(tableName);
