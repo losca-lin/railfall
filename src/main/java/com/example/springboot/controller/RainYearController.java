@@ -1,13 +1,20 @@
 package com.example.springboot.controller;
 
-import org.springframework.web.bind.annotation.*;
-import javax.annotation.Resource;
+import cn.hutool.poi.excel.ExcelReader;
+import cn.hutool.poi.excel.ExcelUtil;
+import cn.hutool.poi.excel.ExcelWriter;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.common.Result;
-
-import com.example.springboot.service.IRainYearService;
 import com.example.springboot.entity.RainYear;
+import com.example.springboot.service.IRainYearService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 /**
@@ -63,7 +70,9 @@ public class RainYearController {
         QueryWrapper<RainYear> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
         if (!"".equals(name)) {
-            queryWrapper.like("name", name);
+            queryWrapper.like("gname", name).or()
+                    .like("lname", name).or()
+                    .like("sname", name);
         }
         return Result.success(rainYearService.page(new Page<>(pageNum, pageSize), queryWrapper));
     }

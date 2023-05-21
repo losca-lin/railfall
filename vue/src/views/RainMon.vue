@@ -30,40 +30,41 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
 <!--      <el-table-column type="selection" width="55"></el-table-column>-->
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="gid" label="工务段id"></el-table-column>
-      <el-table-column prop="lid" label="铁路线id"></el-table-column>
+      <el-table-column prop="gname" label="工务段名称"></el-table-column>
+      <el-table-column prop="lname" label="铁路线名称"></el-table-column>
+      <el-table-column prop="sname" label="站点"></el-table-column>
       <el-table-column prop="dayMon" label="月总雨量"></el-table-column>
       <el-table-column prop="r1day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r2day" label="下面同理我就不写了"></el-table-column>
-      <el-table-column prop="r3day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r4day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r5day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r6day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r7day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r8day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r9day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r10day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r11day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r12day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r13day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r14day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r15day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r16day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r17day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r18day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r19day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r20day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r21day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r22day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r23day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r24day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r25day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r26day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r27day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r28day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r29day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r30day" label="1号总雨量"></el-table-column>
-      <el-table-column prop="r31day" label="1号总雨量"></el-table-column>
+      <el-table-column prop="r2day" label="2号总雨量"></el-table-column>
+      <el-table-column prop="r3day" label="3号总雨量"></el-table-column>
+      <el-table-column prop="r4day" label="4号总雨量"></el-table-column>
+      <el-table-column prop="r5day" label="5号总雨量"></el-table-column>
+      <el-table-column prop="r6day" label="6号总雨量"></el-table-column>
+      <el-table-column prop="r7day" label="7号总雨量"></el-table-column>
+      <el-table-column prop="r8day" label="8号总雨量"></el-table-column>
+      <el-table-column prop="r9day" label="9号总雨量"></el-table-column>
+      <el-table-column prop="r10day" label="10号总雨量"></el-table-column>
+      <el-table-column prop="r11day" label="11号总雨量"></el-table-column>
+      <el-table-column prop="r12day" label="12号总雨量"></el-table-column>
+      <el-table-column prop="r13day" label="13号总雨量"></el-table-column>
+      <el-table-column prop="r14day" label="14号总雨量"></el-table-column>
+      <el-table-column prop="r15day" label="15号总雨量"></el-table-column>
+      <el-table-column prop="r16day" label="16号总雨量"></el-table-column>
+      <el-table-column prop="r17day" label="17号总雨量"></el-table-column>
+      <el-table-column prop="r18day" label="18号总雨量"></el-table-column>
+      <el-table-column prop="r19day" label="19号总雨量"></el-table-column>
+      <el-table-column prop="r20day" label="20号总雨量"></el-table-column>
+      <el-table-column prop="r21day" label="21号总雨量"></el-table-column>
+      <el-table-column prop="r22day" label="22号总雨量"></el-table-column>
+      <el-table-column prop="r23day" label="23号总雨量"></el-table-column>
+      <el-table-column prop="r24day" label="24号总雨量"></el-table-column>
+      <el-table-column prop="r25day" label="25号总雨量"></el-table-column>
+      <el-table-column prop="r26day" label="26号总雨量"></el-table-column>
+      <el-table-column prop="r27day" label="27号总雨量"></el-table-column>
+      <el-table-column prop="r28day" label="28号总雨量"></el-table-column>
+      <el-table-column prop="r29day" label="29号总雨量"></el-table-column>
+      <el-table-column prop="r30day" label="30号总雨量"></el-table-column>
+      <el-table-column prop="r31day" label="31号总雨量"></el-table-column>
 
       <el-table-column label="操作"  width="200" align="center">
         <template slot-scope="scope">
@@ -96,11 +97,14 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="50%" >
       <el-form label-width="120px" size="small">
-        <el-form-item label="工务段id">
-          <el-input v-model="form.gid" autocomplete="off"></el-input>
+        <el-form-item label="工务段名称">
+          <el-input v-model="form.gname" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="铁路线id">
-          <el-input v-model="form.lid" autocomplete="off"></el-input>
+        <el-form-item label="铁路线名称">
+          <el-input v-model="form.lname" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="站点">
+          <el-input v-model="form.sname" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="月总雨量">
           <el-input v-model="form.dayMon" autocomplete="off"></el-input>
@@ -108,94 +112,94 @@
         <el-form-item label="1号总雨量">
           <el-input v-model="form.r1day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="下面同理我就不写了">
+        <el-form-item label="2号总雨量">
           <el-input v-model="form.r2day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="3号总雨量">
           <el-input v-model="form.r3day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="4号总雨量">
           <el-input v-model="form.r4day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="5号总雨量">
           <el-input v-model="form.r5day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="6号总雨量">
           <el-input v-model="form.r6day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="7号总雨量">
           <el-input v-model="form.r7day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="8号总雨量">
           <el-input v-model="form.r8day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="9号总雨量">
           <el-input v-model="form.r9day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="10号总雨量">
           <el-input v-model="form.r10day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="11号总雨量">
           <el-input v-model="form.r11day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="12号总雨量">
           <el-input v-model="form.r12day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="13号总雨量">
           <el-input v-model="form.r13day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="14号总雨量">
           <el-input v-model="form.r14day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="15号总雨量">
           <el-input v-model="form.r15day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="16号总雨量">
           <el-input v-model="form.r16day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="17号总雨量">
           <el-input v-model="form.r17day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="18号总雨量">
           <el-input v-model="form.r18day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="19号总雨量">
           <el-input v-model="form.r19day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="20号总雨量">
           <el-input v-model="form.r20day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="21号总雨量">
           <el-input v-model="form.r21day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="22号总雨量">
           <el-input v-model="form.r22day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="23号总雨量">
           <el-input v-model="form.r23day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="24号总雨量">
           <el-input v-model="form.r24day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="25号总雨量">
           <el-input v-model="form.r25day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="26号总雨量">
           <el-input v-model="form.r26day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="27号总雨量">
           <el-input v-model="form.r27day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="28号总雨量">
           <el-input v-model="form.r28day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="29号总雨量">
           <el-input v-model="form.r29day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="30号总雨量">
           <el-input v-model="form.r30day" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="1号总雨量">
+        <el-form-item label="31号总雨量">
           <el-input v-model="form.r31day" autocomplete="off"></el-input>
         </el-form-item>
 

@@ -1,11 +1,14 @@
 package com.example.springboot.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -20,109 +23,113 @@ public class RainMon implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-      @ApiModelProperty("工务段id")
-      private Integer gid;
+      @ApiModelProperty("工务段名称")
+      private String gname;
 
-      @ApiModelProperty("铁路线id")
-      private Integer lid;
+      @ApiModelProperty("铁路线名称")
+      private String lname;
 
-      @ApiModelProperty("站点id")
-        private Integer id;
+      @ApiModelProperty("id")
+        @TableId(value = "id", type = IdType.AUTO)
+      private Integer id;
+
+      @ApiModelProperty("站点")
+      private String sname;
 
       @ApiModelProperty("月总雨量")
-        private Integer dayMon;
+      private Integer dayMon;
 
       @ApiModelProperty("1号总雨量")
       private Integer r1day;
 
-      @ApiModelProperty("下面同理我就不写了")
+      @ApiModelProperty("2号总雨量")
       private Integer r2day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("3号总雨量")
       private Integer r3day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("4号总雨量")
       private Integer r4day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("5号总雨量")
       private Integer r5day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("6号总雨量")
       private Integer r6day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("7号总雨量")
       private Integer r7day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("8号总雨量")
       private Integer r8day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("9号总雨量")
       private Integer r9day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("10号总雨量")
       private Integer r10day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("11号总雨量")
       private Integer r11day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("12号总雨量")
       private Integer r12day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("13号总雨量")
       private Integer r13day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("14号总雨量")
       private Integer r14day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("15号总雨量")
       private Integer r15day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("16号总雨量")
       private Integer r16day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("17号总雨量")
       private Integer r17day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("18号总雨量")
       private Integer r18day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("19号总雨量")
       private Integer r19day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("20号总雨量")
       private Integer r20day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("21号总雨量")
       private Integer r21day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("22号总雨量")
       private Integer r22day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("23号总雨量")
       private Integer r23day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("24号总雨量")
       private Integer r24day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("25号总雨量")
       private Integer r25day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("26号总雨量")
       private Integer r26day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("27号总雨量")
       private Integer r27day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("28号总雨量")
       private Integer r28day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("29号总雨量")
       private Integer r29day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("30号总雨量")
       private Integer r30day;
 
-      @ApiModelProperty("1号总雨量")
+      @ApiModelProperty("31号总雨量")
       private Integer r31day;
 
 

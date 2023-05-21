@@ -30,8 +30,9 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
 <!--      <el-table-column type="selection" width="55"></el-table-column>-->
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="gid" label="工务段id"></el-table-column>
-      <el-table-column prop="lid" label="铁路线id"></el-table-column>
+      <el-table-column prop="gname" label="工务段名称"></el-table-column>
+      <el-table-column prop="lname" label="铁路线名称"></el-table-column>
+      <el-table-column prop="sname" label="站点名称"></el-table-column>
       <el-table-column prop="r10min" label="10分钟雨量数据"></el-table-column>
       <el-table-column prop="r1hour" label="1小时雨量数据"></el-table-column>
       <el-table-column prop="r3hour" label="3小时雨量数据"></el-table-column>
@@ -74,11 +75,14 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="50%" >
       <el-form label-width="120px" size="small">
-        <el-form-item label="工务段id">
-          <el-input v-model="form.gid" autocomplete="off"></el-input>
+        <el-form-item label="工务段名称">
+          <el-input v-model="form.gname" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="铁路线id">
-          <el-input v-model="form.lid" autocomplete="off"></el-input>
+        <el-form-item label="铁路线名称">
+          <el-input v-model="form.lname" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="站点名称">
+          <el-input v-model="form.sname" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="10分钟雨量数据">
           <el-input v-model="form.r10min" autocomplete="off"></el-input>
@@ -143,7 +147,7 @@ export default {
   },
   // 方法
   methods: {
-    // 获取所有的数据 
+    // 获取所有的数据
     list() {
       this.request.get("/rainCurrent").then(res => {
         this.listdata = res.data
@@ -165,6 +169,7 @@ export default {
 
     // 新增或者更新数据  当id为空新增，id不为空更新
     save() {
+      debugger
       this.request.post("/rainCurrent", this.form).then(res => {
         if (res.code === '200') {
           this.$message.success("保存成功")

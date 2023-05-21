@@ -70,7 +70,9 @@ public class RainCurrentController {
         QueryWrapper<RainCurrent> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
         if (!"".equals(name)) {
-            queryWrapper.like("name", name);
+            queryWrapper.like("gname", name).or()
+                    .like("lname", name).or()
+                    .like("sname", name);
         }
         return Result.success(rainCurrentService.page(new Page<>(pageNum, pageSize), queryWrapper));
     }

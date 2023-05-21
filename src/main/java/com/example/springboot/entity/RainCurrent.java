@@ -1,5 +1,7 @@
 package com.example.springboot.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -22,14 +24,18 @@ public class RainCurrent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-      @ApiModelProperty("工务段id")
-      private Integer gid;
+      @ApiModelProperty("工务段名称")
+      private String gname;
 
-      @ApiModelProperty("铁路线id")
-      private Integer lid;
+      @ApiModelProperty("铁路线名称")
+      private String lname;
 
-      @ApiModelProperty("站点id")
-        private Integer id;
+      @ApiModelProperty("id")
+        @TableId(value = "id", type = IdType.AUTO)
+      private Integer id;
+
+      @ApiModelProperty("站点名称")
+      private String sname;
 
       @ApiModelProperty("10分钟雨量数据")
       private Integer r10min;

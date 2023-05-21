@@ -70,7 +70,9 @@ public class RainDayController {
         QueryWrapper<RainDay> queryWrapper = new QueryWrapper<>();
         queryWrapper.orderByDesc("id");
         if (!"".equals(name)) {
-            queryWrapper.like("name", name);
+            queryWrapper.like("gname", name).or()
+                    .like("lname", name).or()
+                    .like("sname", name);
         }
         return Result.success(rainDayService.page(new Page<>(pageNum, pageSize), queryWrapper));
     }

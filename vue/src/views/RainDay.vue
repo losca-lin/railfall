@@ -30,37 +30,38 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
 <!--      <el-table-column type="selection" width="55"></el-table-column>-->
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="gid" label="工务段id"></el-table-column>
-      <el-table-column prop="lid" label="铁路线id"></el-table-column>
+      <el-table-column prop="gname" label="工务段名称"></el-table-column>
+      <el-table-column prop="lname" label="铁路线名称"></el-table-column>
+      <el-table-column prop="sname" label="站点名称"></el-table-column>
       <el-table-column prop="dayRain" label="日总雨量"></el-table-column>
       <el-table-column prop="r10minMaxTime" label="十分钟雨量最大时刻"></el-table-column>
       <el-table-column prop="r10minMax" label="十分钟最大雨量"></el-table-column>
       <el-table-column prop="r1hourMaxTime" label="1小时雨量最大时刻"></el-table-column>
-      <el-table-column prop="1hourMaxr" label="1小时最大雨量"></el-table-column>
+      <el-table-column prop="r1hourMaxr" label="1小时最大雨量"></el-table-column>
       <el-table-column prop="r1hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r2hour" label="下面同上，我就不改了"></el-table-column>
-      <el-table-column prop="r3hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r4hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r5hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r6hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r7hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r8hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r9hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r10hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r11hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r12hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r13hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r14hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r15hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r16hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r17hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r18hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r19hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r20hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r21hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r22hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r23hour" label="0点到1点雨量"></el-table-column>
-      <el-table-column prop="r24hour" label="0点到1点雨量"></el-table-column>
+      <el-table-column prop="r2hour" label="1点到2点雨量"></el-table-column>
+      <el-table-column prop="r3hour" label="2点到3点雨量"></el-table-column>
+      <el-table-column prop="r4hour" label="3点到4点雨量"></el-table-column>
+      <el-table-column prop="r5hour" label="4点到5点雨量"></el-table-column>
+      <el-table-column prop="r6hour" label="5点到6点雨量"></el-table-column>
+      <el-table-column prop="r7hour" label="6点到7点雨量"></el-table-column>
+      <el-table-column prop="r8hour" label="7点到8点雨量"></el-table-column>
+      <el-table-column prop="r9hour" label="8点到9点雨量"></el-table-column>
+      <el-table-column prop="r10hour" label="9点到10点雨量"></el-table-column>
+      <el-table-column prop="r11hour" label="10点到11点雨量"></el-table-column>
+      <el-table-column prop="r12hour" label="11点到12点雨量"></el-table-column>
+      <el-table-column prop="r13hour" label="12点到13点雨量"></el-table-column>
+      <el-table-column prop="r14hour" label="13点到14点雨量"></el-table-column>
+      <el-table-column prop="r15hour" label="14点到15点雨量"></el-table-column>
+      <el-table-column prop="r16hour" label="15点到16点雨量"></el-table-column>
+      <el-table-column prop="r17hour" label="16点到17点雨量"></el-table-column>
+      <el-table-column prop="r18hour" label="17点到18点雨量"></el-table-column>
+      <el-table-column prop="r19hour" label="18点到19点雨量"></el-table-column>
+      <el-table-column prop="r20hour" label="19点到20点雨量"></el-table-column>
+      <el-table-column prop="r21hour" label="20点到21点雨量"></el-table-column>
+      <el-table-column prop="r22hour" label="21点到22点雨量"></el-table-column>
+      <el-table-column prop="r23hour" label="22点到23点雨量"></el-table-column>
+      <el-table-column prop="r24hour" label="23点到24点雨量"></el-table-column>
 
       <el-table-column label="操作"  width="200" align="center">
         <template slot-scope="scope">
@@ -93,11 +94,14 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="50%" >
       <el-form label-width="120px" size="small">
-        <el-form-item label="工务段id">
-          <el-input v-model="form.gid" autocomplete="off"></el-input>
+        <el-form-item label="工务段名称">
+          <el-input v-model="form.gname" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="铁路线id">
-          <el-input v-model="form.lid" autocomplete="off"></el-input>
+        <el-form-item label="铁路线名称">
+          <el-input v-model="form.lname" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="站点名称">
+          <el-input v-model="form.sname" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="日总雨量">
           <el-input v-model="form.dayRain" autocomplete="off"></el-input>
@@ -112,78 +116,78 @@
           <el-date-picker v-model="form.r1hourMaxTime" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期时间"></el-date-picker>
         </el-form-item>
         <el-form-item label="1小时最大雨量">
-          <el-input v-model="form.1hourMaxr" autocomplete="off"></el-input>
+          <el-input v-model="form.r1hourMaxr" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="0点到1点雨量">
           <el-input v-model="form.r1hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="下面同上，我就不改了">
+        <el-form-item label="1点到2点雨量">
           <el-input v-model="form.r2hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="2点到3点雨量">
           <el-input v-model="form.r3hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="3点到4点雨量">
           <el-input v-model="form.r4hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="4点到5点雨量">
           <el-input v-model="form.r5hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="5点到6点雨量">
           <el-input v-model="form.r6hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="6点到7点雨量">
           <el-input v-model="form.r7hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="7点到8点雨量">
           <el-input v-model="form.r8hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="8点到9点雨量">
           <el-input v-model="form.r9hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="9点到10点雨量">
           <el-input v-model="form.r10hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="10点到11点雨量">
           <el-input v-model="form.r11hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="11点到12点雨量">
           <el-input v-model="form.r12hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="12点到13点雨量">
           <el-input v-model="form.r13hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="13点到14点雨量">
           <el-input v-model="form.r14hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="14点到15点雨量">
           <el-input v-model="form.r15hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="15点到16点雨量">
           <el-input v-model="form.r16hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="16点到17点雨量">
           <el-input v-model="form.r17hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="17点到18点雨量">
           <el-input v-model="form.r18hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="18点到19点雨量">
           <el-input v-model="form.r19hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="19点到20点雨量">
           <el-input v-model="form.r20hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="20点到21点雨量">
           <el-input v-model="form.r21hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="21点到22点雨量">
           <el-input v-model="form.r22hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="22点到23点雨量">
           <el-input v-model="form.r23hour" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="0点到1点雨量">
+        <el-form-item label="23点到24点雨量">
           <el-input v-model="form.r24hour" autocomplete="off"></el-input>
         </el-form-item>
 

@@ -87,7 +87,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="采集时间" >
-          <el-date-picker v-model="form.time" type="datetime" 
+          <el-date-picker v-model="form.time" type="datetime"
           value-format="yyyy-MM-dd HH" placeholder="选择日期时间" :disabled="form.id ? true : false"></el-date-picker>
         </el-form-item>
         <el-form-item label="降雨量(mm)">
@@ -135,13 +135,13 @@ export default {
   // 方法
   methods: {
 
-    // 获取车站所有的数据 
+    // 获取车站所有的数据
     stationlist() {
       this.request.get("/station").then(res => {
         this.stationlistdata = res.data
       })
     },
-    // 获取所有的数据 
+    // 获取所有的数据
     list() {
       this.request.get("/rainfall").then(res => {
         this.listdata = res.data
@@ -163,6 +163,7 @@ export default {
 
     // 新增或者更新数据  当id为空新增，id不为空更新
     save() {
+      debugger
       if(!this.form.sid){
         this.$message.error("请选择车站信息")
         return;
